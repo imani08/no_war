@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "798327527205",
+    "project_id": "final-nowar",
+    "storage_bucket": "final-nowar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798327527205:android:eb63596e5bbc6e9c8eaccc",
+        "android_client_info": {
+          "package_name": "com.example.no_war"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcWa2Y0dmiCfVBKrI1LpY0HHJIG3l40TY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
