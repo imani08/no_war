@@ -17,44 +17,64 @@ class FAQ extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: SingleChildScrollView(
-              child: Text(
-                '''FAQ - NO WAR
-                
-Qu’est-ce que NO WAR ?
+              child: Text('''
+    Foire Aux Questions (FAQ) - NO WAR
 
-NO WAR est une application mobile conçue pour promouvoir la paix et fournir des informations de partout dans le monde via un site web externe et des informations vitales en temps de guerre. Elle offre un roman interactif, des ressources éducatives, des directives de sécurité, et plus encore.
+    1. Qu'est-ce que NO WAR et quelle est sa mission?
 
-Qui a créé NO WAR ?
+    NO WAR est une application développée par l'Innovation Squad, visant à fournir des solutions humanitaires dans le monde. Notre mission est de promouvoir l'éducation, l'information vitale pendant les conflits, et d'inspirer des actions pour la paix.
 
-NO WAR a été développée par 'Innovation Squad', un groupe d’étudiants passionnés par la programmation, composé de:
-Imani Kalumuna,
-Filda Ngoma,
-Moise Isanganino,
-Gehnisi Kitenge.
+    2. Comment puis-je télécharger l'application NO WAR?
 
-Comment NO WAR aide-t-elle pendant les conflits ?
+    Vous pouvez télécharger l'application NO WAR depuis votre magasin d'applications (App Store, Google Play, etc.). Recherchez "NO WAR" et suivez les instructions pour l'installation.
 
-L’application fournit des directives à suivre pendant les conflits, une agression ou la guerre, une carte des zones sécurisées dans un rayon de 20 km, et des notifications régulières.
+    3. Qui sont les membres de l'Innovation Squad?
 
-Comment puis-je soutenir les réfugiés de guerre ?
+    L'Innovation Squad est composée de quatre membres passionnés par la programmation: Imani Kalumuna, Filda Ngoma, Moise Isanganino, et Gehnisi Kitenge.
 
-Vous pouvez faire des dons via l’onglet dédié dans l’application pour soutenir les réfugiés de guerre. Votre contribution peut faire une grande différence.
+    4. En quoi consiste le "Roman Interactif" dans l'application?
 
-L’application est-elle gratuite ?
+    Le "Roman Interactif" offre une expérience immersive en explorant l'histoire des enfants soldats. Plongez dans des récits captivants pour mieux comprendre les défis qu'ils rencontrent.
 
-Oui, NO WAR est entièrement gratuite et vise à être accessible à tous ceux qui en ont besoin.
+    5. Comment accéder aux ressources éducatives dans l'application?
 
-Comment puis-je obtenir des fonds d’écran sensibles ?
+    Dans la section "Éducation pour Tous", vous pouvez accéder à des ressources éducatives gratuites pour favoriser l'apprentissage et le développement.
 
-Les fonds d’écran sont disponibles dans l’application et peuvent être appliqués pour sensibiliser aux effets de la guerre.
+    6. Comment fonctionne la nouvelle fonction d'Alerte Sécurité?
 
-NO WAR est-elle disponible dans ma langue ?
+    La fonction d'Alerte Sécurité vous permet d'envoyer rapidement des messages aux services de sécurité et d'initier des appels en cas d'urgence. Configurez vos préférences dans les paramètres de l'application.
 
-NO WAR est actuellement disponible en plusieurs langues. Veuillez vérifier les paramètres de l’application pour voir si votre langue est prise en charge.
+    7. Comment localiser les zones sécurisées avec la "Carte des Zones Sécurisées"?
 
-Comment puis-je contacter l’équipe de NO WAR ?
+    Utilisez la fonction "Carte des Zones Sécurisées" pour localiser des refuges dans un rayon de 20 km pendant les périodes de conflit.
 
-Pour toute question ou suggestion, veuillez nous contacter via Facebook sur FOCUS HD.''',
+    8. Puis-je contribuer aux dons pour les réfugiés et comment?
+
+    Oui, vous pouvez contribuer aux dons pour les réfugiés en accédant à l'onglet dédié dans l'application et en suivant les instructions pour effectuer un don.
+
+    9. Comment personnaliser mon appareil avec les "Fonds d'Écran Sensibles"?
+
+    Dans la section "Fonds d'Écran Sensibles", choisissez parmi une sélection illustrant les conséquences de la guerre et personnalisez votre appareil.
+
+    10. Quand vais-je recevoir les notifications régulières?
+
+    Vous recevrez des notifications toutes les deux heures, vous tenant informé des actualités, mises à jour de contenu et opportunités d'engagement.
+
+    11. Comment puis-je partager mon expérience avec NO WAR?
+
+    Partagez votre expérience en utilisant le hashtag #NowarApp sur les médias sociaux et encouragez vos amis à télécharger l'application.
+
+    12. NO WAR est-il disponible dans d'autres langues que le français?
+
+    Actuellement, l'application est disponible en français, mais nous envisageons d'ajouter d'autres langues pour atteindre un public plus large à l'avenir.
+
+    N'hésitez pas à nous contacter via l'application pour toute question supplémentaire. Merci de votre soutien et de votre engagement envers un monde sans guerre.
+
+
+
+
+
+    ''',
                 textAlign: TextAlign.start,
               ),
             ),
