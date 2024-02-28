@@ -4,12 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
-
-
 class discussions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ChatScreen(),
     );
   }
@@ -31,6 +30,23 @@ class ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _getUser();
+    _subscribeToMessages();
+  }
+  void _subscribeToMessages() {
+    FirebaseFirestore.instance.collection('messages').snapshots().listen((snapshot) {
+      _messages.clear(); // Efface les messages existants pour éviter la duplication
+      snapshot.docs.forEach((doc) {
+        // Analyse les données depuis Firestore et crée des objets Message
+        String senderId = doc['senderId'];
+        String senderName = doc['senderName'];
+        String text = doc['text'];
+
+        Message message = Message(senderId, senderName, text);
+        setState(() {
+          _messages.add(message);
+        });
+      });
+    });
   }
 
   void _getUser() async {
@@ -45,7 +61,9 @@ class ChatScreenState extends State<ChatScreen> {
           .get();
 
       // Get user location
-      Position position = await _getCurrentLocation();
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
 
       // Get city from user's location
       String cityName = await _getCityFromLocation(position);
@@ -81,13 +99,12 @@ class ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: _user != null ? Text(_user!.displayName ?? '') : Text('Communauté'),
+        title: _user != null ? Text(_user!.displayName ?? '') : Text('COMMUNAUTE NO WAR'),
+        backgroundColor: Colors.blue,
         leading: _user != null
             ? IconButton(
           icon: CircleAvatar(
-            backgroundImage: _userPhotoURL.isNotEmpty
-                ? NetworkImage(_userPhotoURL)
-                : AssetImage('assets/default_avatar.png'), // Placeholder image
+            backgroundImage:  AssetImage('assets/images/avatar.jpg'), // Placeholder image
           ),
           onPressed: () {
             Navigator.push(
@@ -122,9 +139,11 @@ class ChatScreenState extends State<ChatScreen> {
         )
             : null,
       ),
-      body: Column(
-        children: [
-          Expanded(
+    body: Container(
+    color: Colors.white, // Définissez la couleur de fond sur le noir
+    child: Column(
+    children: [
+    Expanded(
             child: ListView.builder(
               itemCount: _messages.length,
               itemBuilder: (context, index) {
@@ -135,11 +154,11 @@ class ChatScreenState extends State<ChatScreen> {
           _buildInputField(),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildMessage(Message message) {
-    bool isMyMessage = message.senderId == _user?.uid; // Replace 'myUserId' with the actual user ID
+    bool isMyMessage = message.senderId == _user?.uid;
     return Container(
       alignment: isMyMessage ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
@@ -148,6 +167,10 @@ class ChatScreenState extends State<ChatScreen> {
         decoration: BoxDecoration(
           color: isMyMessage ? Colors.blue : Colors.white,
           borderRadius: BorderRadius.circular(12.0),
+          image: DecorationImage(
+            image: AssetImage('assets/images/avatar.jpg'), // Placeholder image
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +214,7 @@ class ChatScreenState extends State<ChatScreen> {
     String messageText = _messageController.text.trim();
     if (messageText.isNotEmpty && _user != null) {
       Message newMessage = Message(_user!.uid, _user!.displayName ?? '', messageText);
-      // Save the message to Firebase Firestore
+      // Enregistre le message dans Firebase Firestore
       FirebaseFirestore.instance.collection('messages').add({
         'senderId': newMessage.senderId,
         'senderName': newMessage.senderName,
@@ -273,10 +296,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
       // Refresh the user data in the parent page
       Navigator.pop(context, true); // Pass a result back to trigger refresh
-
     } catch (e) {
       print('Error updating user profile: $e');
-      // Handle the error as needed
-    }
+    // Handle the error as needed
   }
+}
 }

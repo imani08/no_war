@@ -146,8 +146,7 @@ class MyHomePage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue, // Background color of the button
-                          onPrimary: Colors.white, // Text color of the button
+                          foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color of the button
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0), // Adjust border radius as needed
                           ),

@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 
 class NosFonds extends StatelessWidget {
-  List<String> wallpapers = [
-    'assets/fonds d\'ecran/1.jpg',
-    'assets/fonds d\'ecran/2.jpg',
-    'assets/fonds d\'ecran/3.jpg',
-    'assets/fonds d\'ecran/4.jpg',
-    'assets/fonds d\'ecran/5.jpg',
-    'assets/fonds d\'ecran/6.jpg',
-    'assets/fonds d\'ecran/7.jpg',
-    'assets/fonds d\'ecran/8.jpg',
-    // Ajoutez ici les chemins de vos images de fond d'écran
+  List<String> cheminImages = [
+    'fonds/1.jpg',
+    'fonds/2.jpg',
+    'fonds/3.jpg',
+    'fonds/4.jpg',
+    'fonds/5.jpg',
+    'fonds/6.jpg',
+    'fonds/7.jpg',
+    'fonds/8.jpg',
   ];
+  Future<String> _getUrlImage(String chemin) async {
+    final ref = firebase_storage.FirebaseStorage.instance.ref().child(chemin);
+    return await ref.getDownloadURL();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +43,38 @@ class NosFonds extends StatelessWidget {
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
         ),
-        itemCount: wallpapers.length,
+        itemCount: cheminImages.length,
         itemBuilder: (BuildContext context, int index) {
-          return InkWell(
-            onTap: () async {
-              await _showPreviewDialog(context, wallpapers[index]);
+          return FutureBuilder<String>(
+            future: _getUrlImage(cheminImages[index]),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('Erreur : ${snapshot.error}');
+              } else {
+                String urlImage = snapshot.data!;
+                return InkWell(
+                  onTap: () async {
+                    await _showPreviewDialog(context, urlImage);
+                  },
+                  child: Image.network(
+                    urlImage,
+                    fit: BoxFit.cover,
+                  ),
+                );
+              }
             },
-            child: Image.asset(
-              wallpapers[index],
-              fit: BoxFit.cover,
-            ),
           );
         },
       ),
     );
   }
 
+  }
+
   Future<void> _showPreviewDialog(
-      BuildContext context, String wallpaperPath) async {
+      BuildContext context, String cheminImage) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -66,14 +83,14 @@ class NosFonds extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                wallpaperPath,
+              Image.network(
+                cheminImage,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _setWallpaper(wallpaperPath);
+                  _setWallpaper(cheminImage);
                   Navigator.pop(context);
                 },
                 child: Text('Appliquer'),
@@ -84,7 +101,7 @@ class NosFonds extends StatelessWidget {
       },
     );
   }
-  Future<void> _setWallpaper(String wallpaperPath) async {
+  Future<void> _setWallpaper(String  cheminImage) async {
     var status = await Permission.storage.status;
     if (status.isDenied) {
       // Demander la permission
@@ -96,7 +113,7 @@ class NosFonds extends StatelessWidget {
       int location = WallpaperManager.HOME_SCREEN;
       try {
         final result = await WallpaperManager.setWallpaperFromFile(
-            wallpaperPath, location);
+            cheminImage, location);
         if (result == WallpaperManager.HOME_SCREEN) {
           print('Fond d\'écran appliqué avec succès');
         } else {
@@ -110,6 +127,6 @@ class NosFonds extends StatelessWidget {
       print('Permission de stockage refusée');
     }
   }
-}
+
 
   
