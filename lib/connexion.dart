@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'Ecran acceuil.dart';
+import 'discussions.dart';
 
 class loginpage extends StatefulWidget {
   loginpage({super.key});
@@ -56,7 +56,7 @@ class _loginpageState extends State<loginpage> {
                 controller: passwordController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'mot de passe avec 8 chiffres ',
+                  labelText: 'mot de passe ',
                   labelStyle: TextStyle(color: Colors.blue),
                 ),
               ),
@@ -79,7 +79,7 @@ class _loginpageState extends State<loginpage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const EcranAccueil()));
+                                builder: (context) => const discussions()));
                       } catch (e) {
                         print('Sign-in error: $e');
                       }
@@ -101,7 +101,7 @@ class _loginpageState extends State<loginpage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const EcranAccueil())
+                              builder: (context) => const discussions())
                       );
                     },
                     child: const Text('Creer un compte', style: TextStyle(color: Colors.white)),

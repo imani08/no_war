@@ -132,22 +132,6 @@ class _EcranAccueilState extends State<EcranAccueil> {
               },
 
             ),
-            ListTile(
-              title: const Text(
-                'S\'enregistrer',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.blue,
-                ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => loginpage()),
-                );
-              },
-
-            ),
           ],
         ),
         backgroundColor: Colors.white,
@@ -398,6 +382,17 @@ pour leur survie et leur liberté
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Naviguer vers une nouvelle page lorsque le bouton est appuyé
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => loginpage()),
+          );
+        },
+        child: Icon(Icons.comment),
+        backgroundColor: Colors.blue,
       ),
 
       bottomNavigationBar: BottomNavigationBar(
