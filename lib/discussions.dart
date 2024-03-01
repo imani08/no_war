@@ -6,6 +6,10 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'fond d ecran.dart';
+import 'Ecran acceuil.dart';
+import 'visit.dart';
+import 'alert.dart';
 
 
 
@@ -166,6 +170,69 @@ class _UserProfilePageState extends State<UserProfilePage> {
           ],
         ),
       ),
+
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Acceuil',
+
+          ),
+          BottomNavigationBarItem(
+            icon: Image(image: AssetImage('assets/images/congo.png'), // Remplacez par votre URL
+              width: 25, // Largeur souhaitée de l'image
+              height: 25, // Hauteur souhaitée de l'image
+              fit: BoxFit.contain,
+            ),// Ajustement de la taille de l'image)
+            label: 'Visit DRC',
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.warning),
+            label: 'Alert',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.image),
+            label: 'fonds d\'écrans',
+          ),
+
+        ],
+
+        selectedIconTheme: IconThemeData(color: Colors.blue), // Icônes sélectionnées en bleu
+        unselectedIconTheme: IconThemeData(color: Colors.blue),
+        selectedLabelStyle: TextStyle(color: Colors.blue), // Style du label sélectionné
+        unselectedLabelStyle: TextStyle(color: Colors.blue),// Icônes non sélectionnées en blanc
+        onTap: (int index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>EcranAccueil()),
+            );
+          }
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Visit()),
+            );
+          }
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Alert()),
+            );
+          }
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NosFonds()),
+            );
+          }
+
+        },
+      ),
     );
+
   }
 }
