@@ -388,12 +388,17 @@ pour leur survie et leur liberté
           // Naviguer vers une nouvelle page lorsque le bouton est appuyé
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => loginpage()),
+            MaterialPageRoute(builder: (context) => loginPage()),
           );
         },
-        child: Icon(Icons.comment),
-        backgroundColor: Colors.blue,
+        child: Image.asset(
+          'assets/images/avatar.jpg', // Remplacez par le chemin de votre image locale
+          width: 36.0, // Ajustez la largeur selon vos besoins
+          height: 36.0, // Ajustez la hauteur selon vos besoins
+        ),
+        backgroundColor: Colors.lightBlue,
       ),
+
 
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

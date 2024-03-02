@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'avant.dart';
+import 'Ecran acceuil.dart';
 import 'nitif.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // Naviguer vers la page Avant
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Avant()),
+        MaterialPageRoute(builder: (context) => EcranAccueil()),
       );
     });
   }
