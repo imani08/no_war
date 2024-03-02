@@ -3,19 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'discussions.dart';
 
-class loginPage extends StatefulWidget {
-  loginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<loginPage> createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<loginPage> {
+class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
-  final DatabaseReference _userRef = FirebaseDatabase.instance.reference().child('users');
+  final DatabaseReference _userRef =
+  FirebaseDatabase.instance.reference().child('users');
 
   @override
   void initState() {
@@ -104,7 +105,9 @@ class _LoginPageState extends State<loginPage> {
                   ElevatedButton(
                     onPressed: () async {
                       try {
-                        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        UserCredential userCredential =
+                        await FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text,
                         );
@@ -119,7 +122,7 @@ class _LoginPageState extends State<loginPage> {
                           'nom': lastNameController.text,
                         });
 
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => discussions(),
@@ -140,7 +143,8 @@ class _LoginPageState extends State<loginPage> {
                   const SizedBox(width: 10),
                   ElevatedButton(
                     onPressed: () async {
-                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
                         email: emailController.text,
                         password: passwordController.text,
                       );
@@ -155,7 +159,7 @@ class _LoginPageState extends State<loginPage> {
                         });
                       }
 
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => discussions(),
@@ -173,11 +177,6 @@ class _LoginPageState extends State<loginPage> {
                 ],
               ),
               const SizedBox(height: 8),
-              Text(
-                'Enregistrez-vous à la communauté NO WAR, Pour contribuer à une paix durable dans le monde',
-                style: TextStyle(color: Colors.blue),
-                textAlign: TextAlign.center,
-              ),
             ],
           ),
         ),

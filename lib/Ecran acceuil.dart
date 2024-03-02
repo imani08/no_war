@@ -388,7 +388,7 @@ pour leur survie et leur liberté
           // Naviguer vers une nouvelle page lorsque le bouton est appuyé
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => loginPage()),
+            MaterialPageRoute(builder: (context) => LoginPage()),
           );
         },
         child: Image.asset(

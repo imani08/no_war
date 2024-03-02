@@ -3,20 +3,21 @@ import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
+
 class NosFonds extends StatelessWidget {
-  Future<List<String>> _getAllImageUrls() async {
-    List<String> imageUrls = [];
-    try {
-      final firebase_storage.ListResult result =
-      await firebase_storage.FirebaseStorage.instance.ref('fonds').listAll();
-      result.items.forEach((firebase_storage.Reference ref) async {
-        String url = await ref.getDownloadURL();
-        imageUrls.add(url);
-      });
-    } catch (e) {
-      print('Erreur lors de la récupération des images : $e');
-    }
-    return imageUrls;
+  List<String> cheminImages = [
+    'fonds/1.jpg',
+    'fonds/2.jpg',
+    'fonds/3.jpg',
+    'fonds/4.jpg',
+    'fonds/5.jpg',
+    'fonds/6.jpg',
+    'fonds/7.jpg',
+    'fonds/8.jpg',
+  ];
+  Future<String> _getUrlImage(String chemin) async {
+    final ref = firebase_storage.FirebaseStorage.instance.ref().child(chemin);
+    return await ref.getDownloadURL();
   }
 
   @override
@@ -36,41 +37,44 @@ class NosFonds extends StatelessWidget {
           ],
         ),
       ),
-      body: FutureBuilder<List<String>>(
-        future: _getAllImageUrls(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          } else if (snapshot.hasError) {
-            return Text('Erreur : ${snapshot.error}');
-          } else {
-            List<String> urls = snapshot.data!;
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
-              itemCount: urls.length,
-              itemBuilder: (BuildContext context, int index) {
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: cheminImages.length,
+        itemBuilder: (BuildContext context, int index) {
+          return FutureBuilder<String>(
+            future: _getUrlImage(cheminImages[index]),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text('Erreur : ${snapshot.error}');
+              } else {
+                String urlImage = snapshot.data!;
                 return InkWell(
                   onTap: () async {
-                    await _showPreviewDialog(context, urls[index]);
+                    await _showPreviewDialog(context, urlImage);
                   },
                   child: Image.network(
-                    urls[index],
+                    urlImage,
                     fit: BoxFit.cover,
                   ),
                 );
-              },
-            );
-          }
+              }
+            },
+          );
         },
       ),
     );
   }
 
-  Future<void> _showPreviewDialog(BuildContext context, String imageUrl) async {
+  }
+
+  Future<void> _showPreviewDialog(
+      BuildContext context, String cheminImage) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -80,13 +84,13 @@ class NosFonds extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.network(
-                imageUrl,
+                cheminImage,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  _setWallpaper(imageUrl);
+                  _setWallpaper(cheminImage);
                   Navigator.pop(context);
                 },
                 child: Text('Appliquer'),
@@ -97,8 +101,7 @@ class NosFonds extends StatelessWidget {
       },
     );
   }
-
-  Future<void> _setWallpaper(String imageUrl) async {
+  Future<void> _setWallpaper(String  cheminImage) async {
     var status = await Permission.storage.status;
     if (status.isDenied) {
       // Demander la permission
@@ -110,9 +113,7 @@ class NosFonds extends StatelessWidget {
       int location = WallpaperManager.HOME_SCREEN;
       try {
         final result = await WallpaperManager.setWallpaperFromFile(
-          imageUrl,
-          location,
-        );
+            cheminImage, location);
         if (result == WallpaperManager.HOME_SCREEN) {
           print('Fond d\'écran appliqué avec succès');
         } else {
@@ -126,4 +127,6 @@ class NosFonds extends StatelessWidget {
       print('Permission de stockage refusée');
     }
   }
-}
+
+
+
