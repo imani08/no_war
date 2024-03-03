@@ -84,6 +84,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
 
   Future<void> _getUserInfo() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      _showNoInternetDialog();
+      return;
+    }
+
     final User? user = _auth.currentUser;
 
     if (user != null) {
@@ -98,6 +104,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
   }
 
   Future<void> _getLocation() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      _showNoInternetDialog();
+      return;
+    }
+
     try {
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
@@ -118,6 +130,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
   }
 
   Future<void> _uploadImageToStorage(File image, String storagePath) async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      _showNoInternetDialog();
+      return;
+    }
+
     final User? user = _auth.currentUser;
 
     if (user != null) {
@@ -296,14 +314,15 @@ class _UserProfilePageState extends State<UserProfilePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,size: 30,),
             label: 'Acceuil',
+
           ),
           BottomNavigationBarItem(
             icon: Image(
               image: AssetImage('assets/images/congo.png'),
-              width: 25,
-              height: 25,
+              width: 35,
+              height: 35,
               fit: BoxFit.contain,
             ),
             label: 'Visit DRC',

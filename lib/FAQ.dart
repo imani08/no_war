@@ -18,61 +18,58 @@ class FAQ extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Text('''
-    Foire Aux Questions (FAQ) - NO WAR
+    
+Foire Aux Questions (FAQ) - NO WAR
 
-    1. Qu'est-ce que NO WAR et quelle est sa mission?
+Qu'est-ce que NO WAR et quelle est sa mission?
 
-    NO WAR est une application développée par l'Innovation Squad, visant à fournir des solutions humanitaires dans le monde. Notre mission est de promouvoir l'éducation, l'information vitale pendant les conflits, et d'inspirer des actions pour la paix.
+NO WAR est une application développée par AmalTech, visant à fournir des solutions humanitaires dans le monde. Notre mission est de promouvoir l'éducation, l'information vitale pendant les conflits, et d'inspirer des actions pour la paix.
 
-    2. Comment puis-je télécharger l'application NO WAR?
+Comment puis-je télécharger l'application NO WAR?
 
-    Vous pouvez télécharger l'application NO WAR depuis votre magasin d'applications (App Store, Google Play, etc.). Recherchez "NO WAR" et suivez les instructions pour l'installation.
+Vous pouvez télécharger l'application NO WAR depuis votre magasin d'applications (App Store, Google Play, etc.). Recherchez "NO WAR" et suivez les instructions pour l'installation.
 
-    3. Qui sont les membres de l'Innovation Squad?
+Qui sont les membres de l'équipe AmalTech?
 
-    L'Innovation Squad est composée de quatre membres passionnés par la programmation: Imani Kalumuna, Filda Ngoma, Moise Isanganino, et Gehnisi Kitenge.
+L'équipe AmalTech est composée de quatre membres passionnés par la programmation: Imani Kalumuna, Filda Ngoma, Moise Isanganino, et Gehnisi Kitenge.
 
-    4. En quoi consiste le "Roman Interactif" dans l'application?
+En quoi consiste le "Roman Interactif" dans l'application?
 
-    Le "Roman Interactif" offre une expérience immersive en explorant l'histoire des enfants soldats. Plongez dans des récits captivants pour mieux comprendre les défis qu'ils rencontrent.
+Le "Roman Interactif" offre une expérience immersive en explorant l'histoire des enfants soldats. Plongez dans des récits captivants pour mieux comprendre les défis qu'ils rencontrent.
 
-    5. Comment accéder aux ressources éducatives dans l'application?
+Comment accéder aux ressources éducatives dans l'application?
 
-    Dans la section "Éducation pour Tous", vous pouvez accéder à des ressources éducatives gratuites pour favoriser l'apprentissage et le développement.
+Dans la section "Éducation pour Tous", vous pouvez accéder à des ressources éducatives gratuites pour favoriser l'apprentissage et le développement.
 
-    6. Comment fonctionne la nouvelle fonction d'Alerte Sécurité?
+Comment fonctionne la nouvelle fonction d'Alerte Sécurité?
 
-    La fonction d'Alerte Sécurité vous permet d'envoyer rapidement des messages aux services de sécurité et d'initier des appels en cas d'urgence. Configurez vos préférences dans les paramètres de l'application.
+La fonction d'Alerte Sécurité vous permet d'envoyer rapidement des messages aux services de sécurité et d'initier des appels en cas d'urgence. Configurez vos préférences dans les paramètres de l'application.
 
-    7. Comment localiser les zones sécurisées avec la "Carte des Zones Sécurisées"?
+Comment localiser les zones sécurisées avec la "Zones Verte"?
 
-    Utilisez la fonction "Carte des Zones Sécurisées" pour localiser des refuges dans un rayon de 20 km pendant les périodes de conflit.
+Utilisez la fonction "Zone Verte" pour localiser des refuges dans un rayon de 20 km pendant les périodes de conflit.
 
-    8. Puis-je contribuer aux dons pour les réfugiés et comment?
+Puis-je contribuer aux dons pour les réfugiés et comment?
 
-    Oui, vous pouvez contribuer aux dons pour les réfugiés en accédant à l'onglet dédié dans l'application et en suivant les instructions pour effectuer un don.
+Oui, vous pouvez contribuer aux dons pour les réfugiés en accédant à l'onglet dédié dans l'application et en suivant les instructions pour effectuer un don.
 
-    9. Comment personnaliser mon appareil avec les "Fonds d'Écran Sensibles"?
+Comment personnaliser mon appareil avec les "Fonds d'Écran Sensibles"?
 
-    Dans la section "Fonds d'Écran Sensibles", choisissez parmi une sélection illustrant les conséquences de la guerre et personnalisez votre appareil.
+Dans la section "Fonds d'Écran Sensibles", choisissez parmi une sélection illustrant les conséquences de la guerre et personnalisez votre appareil.
 
-    10. Quand vais-je recevoir les notifications régulières?
+Comment créer un compte et accéder à mon profil sur NO WAR?
 
-    Vous recevrez des notifications toutes les deux heures, vous tenant informé des actualités, mises à jour de contenu et opportunités d'engagement.
+Connectez-vous ou créez un compte pour accéder à votre profil, où vous pourrez modifier votre photo de profil, votre photo de couverture, et envoyer des messages à l'équipe AmalTech pour contribuer à la cause. La page affichera votre adresse e-mail, votre ville, et votre pays.
 
-    11. Comment puis-je partager mon expérience avec NO WAR?
+Comment puis-je partager mon expérience avec NO WAR?
 
-    Partagez votre expérience en utilisant le hashtag #NowarApp sur les médias sociaux et encouragez vos amis à télécharger l'application.
+Partagez votre expérience en utilisant le hashtag #NowarApp sur les médias sociaux et encouragez vos amis à télécharger l'application.
 
-    12. NO WAR est-il disponible dans d'autres langues que le français?
+NO WAR est-il disponible dans d'autres langues que le français?
 
-    Actuellement, l'application est disponible en français, mais nous envisageons d'ajouter d'autres langues pour atteindre un public plus large à l'avenir.
+Actuellement, l'application est disponible en français, mais nous envisageons d'ajouter d'autres langues pour atteindre un public plus large à l'avenir.
 
-    N'hésitez pas à nous contacter via l'application pour toute question supplémentaire. Merci de votre soutien et de votre engagement envers un monde sans guerre.
-
-
-
-
+N'oubliez pas de donner à l'application l'accès à la localisation et au stockage dans les paramètres de votre téléphone pour une expérience optimale. N'hésitez pas à nous contacter via l'application pour toute question supplémentaire. Merci de votre soutien et de votre engagement envers un monde sans guerre.
 
     ''',
                 textAlign: TextAlign.start,

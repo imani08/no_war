@@ -165,14 +165,16 @@ class MyHomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, size: 30,),
+
             label: 'Acceuil',
+
           ),
           BottomNavigationBarItem(
             icon: Image(
               image: AssetImage('assets/images/congo.png'),
-              width: 25,
-              height: 25,
+              width: 35,
+              height: 35,
               fit: BoxFit.contain,
             ),
             label: 'Congo',

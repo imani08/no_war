@@ -403,14 +403,14 @@ pour leur survie et leur liberté
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,size: 30,),
             label: 'Acceuil',
 
           ),
           BottomNavigationBarItem(
             icon: Image(image: AssetImage('assets/images/congo.png'), // Remplacez par votre URL
-              width: 30, // Largeur souhaitée de l'image
-              height: 30, // Hauteur souhaitée de l'image
+              width: 35, // Largeur souhaitée de l'image
+              height: 35, // Hauteur souhaitée de l'image
               fit: BoxFit.contain,
             ),// Ajustement de la taille de l'image)
             label: 'Visit DRC',
