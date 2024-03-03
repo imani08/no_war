@@ -11,6 +11,8 @@ import 'fond d ecran.dart';
 import 'Ecran acceuil.dart';
 import 'visit.dart';
 import 'alert.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+
 
 class discussions extends StatelessWidget {
   @override
@@ -43,9 +45,43 @@ class _UserProfilePageState extends State<UserProfilePage> {
   @override
   void initState() {
     super.initState();
+    _checkInternetConnection();
     _getUserInfo();
     _getLocation();
   }
+
+  void _showNoInternetDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Pas de connexion Internet'),
+          content: Text('Veuillez vous connecter à Internet pour accéder à cette page.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Vous pouvez ajouter d'autres actions en fonction de vos besoins
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  Future<void> _checkInternetConnection() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      // L'utilisateur n'est pas connecté à Internet
+      _showNoInternetDialog();
+    }
+  }
+
+
+
+
+
 
   Future<void> _getUserInfo() async {
     final User? user = _auth.currentUser;
@@ -163,24 +199,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: -20.0, // Ajustez cette valeur selon vos besoins
-                  child: ClipOval(
-                    child: SizedBox(
-                      width: 100,
-                      height: 100,
-                      child: profileImageUrl.isNotEmpty
-                          ? Image.network(
-                        profileImageUrl,
-                        fit: BoxFit.cover,
-                      )
-                          : Image.asset(
-                        'assets/images/avatar.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
+
+
                 IconButton(
                   icon: Icon(Icons.edit, color: Colors.white,),
                   onPressed: () {
@@ -289,7 +309,11 @@ class _UserProfilePageState extends State<UserProfilePage> {
             label: 'Visit DRC',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.warning),
+            icon: Image(image: AssetImage('assets/images/icone cloche.png'), // Remplacez par votre URL
+              width: 30, // Largeur souhaitée de l'image
+              height: 30, // Hauteur souhaitée de l'image
+              fit: BoxFit.contain,
+            ),
             label: 'Alert',
           ),
           BottomNavigationBarItem(

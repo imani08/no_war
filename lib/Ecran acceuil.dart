@@ -409,17 +409,22 @@ pour leur survie et leur liberté
           ),
           BottomNavigationBarItem(
             icon: Image(image: AssetImage('assets/images/congo.png'), // Remplacez par votre URL
-              width: 25, // Largeur souhaitée de l'image
-              height: 25, // Hauteur souhaitée de l'image
+              width: 30, // Largeur souhaitée de l'image
+              height: 30, // Hauteur souhaitée de l'image
               fit: BoxFit.contain,
             ),// Ajustement de la taille de l'image)
             label: 'Visit DRC',
 
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.warning),
+            icon: Image(image: AssetImage('assets/images/icone cloche.png'), // Remplacez par votre URL
+              width: 30, // Largeur souhaitée de l'image
+              height: 30, // Hauteur souhaitée de l'image
+              fit: BoxFit.contain,
+            ),
             label: 'Alert',
           ),
+
 
           BottomNavigationBarItem(
             icon: Icon(Icons.image),

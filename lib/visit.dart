@@ -178,7 +178,11 @@ class MyHomePage extends StatelessWidget {
             label: 'Congo',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.warning),
+            icon: Image(image: AssetImage('assets/images/icone cloche.png'), // Remplacez par votre URL
+              width: 30, // Largeur souhaitée de l'image
+              height: 30, // Hauteur souhaitée de l'image
+              fit: BoxFit.contain,
+            ),
             label: 'Alert',
           ),
         ],

@@ -42,40 +42,52 @@ class Alerts extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: ElevatedButton(
-            onPressed: () async {
-              Position position = await _getLocation();
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  // Votre logique existante lorsqu'on appuie sur l'image
+                  Position position = await _getLocation();
 
-              if (_isWithinRadius(position, 20.0)) {
-                _sendSecurityAlert(position);
-                _sendSMS(position);
-                _makePhoneCall();
-                _promptToAddShortcut();
+                  if (_isWithinRadius(position, 20.0)) {
+                    // Logique existante pour envoyer une alerte
+                    _sendSecurityAlert(position);
+                    _sendSMS(position);
+                    _makePhoneCall();
+                    _promptToAddShortcut();
 
-                // Nouvelle fonction pour envoyer des messages et appeler des contacts
-                await _requestContactsPermission();
-                _sendMessageToContacts(position);
-                _makePhoneCallToContacts();
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Vous n'êtes pas dans le rayon de sécurité."),
-                  ),
-                );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              minimumSize: Size(150, 60),
-            ),
-            child: Text(
-              'ALERT ICI',
-              style: TextStyle(fontSize: 19.0, color: Colors.white, fontWeight: FontWeight.bold),
-            ),
+                    // Nouvelle fonction pour envoyer des messages et appeler des contacts
+                    await _requestContactsPermission();
+                    _sendMessageToContacts(position);
+                    _makePhoneCallToContacts();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Vous n'êtes pas dans le rayon de sécurité."),
+                      ),
+                    );
+                  }
+                },
+                child: Image.asset(
+                  'assets/images/icone cloche.png',
+                  width: 120, // Ajustez la largeur selon vos besoins
+                  height: 120, // Ajustez la hauteur selon vos besoins
+                ),
+              ),
+              SizedBox(height: 20), // Espace entre l'image et le texte
+              Text(
+                'ALERTEZ ICI',
+                style: TextStyle(fontSize: 19.0, color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
         ),
       ),
     );
+
+
+
   }
 
   Future<Position> _getLocation() async {
