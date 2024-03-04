@@ -1,6 +1,6 @@
 NO WAR - Application Engagée pour la Paix et la Sécurité
 
-Bienvenue sur NO WAR, une application créée avec passion par l'Innovation Squad - Imani Kalumuna, Filda Ngoma, Moise Isanganino, et Gehnisi Kitenge. Notre mission est de fournir des solutions humanitaires, éducatives, et sécuritaires pour contribuer à un monde sans guerre. Téléchargez dès maintenant NO WAR et devenez un agent de changement.
+Bienvenue sur NO WAR, une application créée avec passion par Amaltech - Imani Kalumuna, Filda Ngoma, Moise Isanganino, et Gehnisi Kitenge. Notre mission est de fournir des solutions humanitaires, éducatives, et sécuritaires pour contribuer à un monde sans guerre. Téléchargez dès maintenant NO WAR et devenez un agent de changement.
 
 Caractéristiques Principales:
 
@@ -13,7 +13,7 @@ Accédez à des ressources éducatives gratuites favorisant l'apprentissage et l
 Directives de Sécurité:
 Suivez des directives claires pour rester en sécurité pendant les périodes de conflit.
 
-Carte des Zones Sécurisées:
+Carte des Zones Sécurisées(zone verte):
 Localisez les zones sécurisées dans un rayon de 20 km pour trouver refuge lorsque nécessaire.
 
 Fonds d'Écran Sensibles:
@@ -34,7 +34,7 @@ Activez la fonction d'alerte sécurité pour signaler rapidement les agressions.
 Comment Utiliser l'Application:
 
 Lancement:
-executez  flutter run dans le fichier source du projet.
+executez  flutter run ou flutter run -d web dans le fichier source du projet.
 
 Exploration du Contenu:
 Plongez dans le roman interactif, accédez aux ressources éducatives, et explorez les fonctionnalités de sécurité.
